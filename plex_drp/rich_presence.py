@@ -3,12 +3,12 @@ import logging
 import typing as t
 
 from plexapi.myplex import MyPlexAccount
-from pypresence import Presence
+from pypresence import AioPresence
 
 log = logging.getLogger(__name__)
 
 
-class PlexDiscordRichPresence(Presence):
+class PlexDiscordRichPresence(AioPresence):
 
     def __init__(
         self,
@@ -49,7 +49,7 @@ class PlexDiscordRichPresence(Presence):
                 await asyncio.sleep(10)
 
         log.debug('Attempting to open IPC connection to Discord..')
-        await self.handshake()
+        await super().connect()
         log.info('IPC connection established to Discord.')
 
         self.connected.set()
