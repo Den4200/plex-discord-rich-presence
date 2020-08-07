@@ -60,4 +60,4 @@ if os.name == 'nt':
     log.info(
         'Setting WindowsSelectorEventLoopPolicy as Plex Discord Rich Presence is running on Windows'
     )
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
