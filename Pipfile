@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "~=3.8.3"
+pre-commit = "~=2.6.0"
+
+[packages]
+coloredlogs = "~=14.0"
+colorama = {version = "~=0.4.3",sys_platform = "== 'win32'"}
+plexapi = "~=4.0.0"
+websocket-client = "~=0.48.0"
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+start = "python -m plex_drp"
+lint = "python -m flake8"
+precommit = "pre-commit install"
