@@ -178,3 +178,5 @@ class PlexDiscordRichPresence(AioPresence):
                 time.sleep(60)
         except KeyboardInterrupt:
             log.info('Stopping Plex Discord Rich Presence..')
+        finally:
+            self.loop.close()
