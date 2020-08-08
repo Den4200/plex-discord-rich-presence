@@ -13,6 +13,7 @@ colorama = {version = "~=0.4.3",sys_platform = "== 'win32'"}
 plexapi = "~=4.0.0"
 websocket-client = "~=0.48.0"
 pypresence = "~=4.0.0"
+pyyaml = "*"
 
 [requires]
 python_version = "3.8"

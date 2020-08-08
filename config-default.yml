@@ -1,0 +1,5 @@
+plex_drp:
+  server:       my-server
+  username:     my-username
+  password:     super-secret-password
+  token:        
