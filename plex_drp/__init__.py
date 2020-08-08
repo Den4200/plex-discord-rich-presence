@@ -19,7 +19,7 @@ def trace_logger(self: logging.Logger, msg: str, *args, **kwargs) -> None:
 
 logging.Logger.trace = trace_logger
 
-LOG_LEVEL = getattr(logging, os.environ.get('PDRP_LOG_LEVEL', ''), logging.DEBUG)
+LOG_LEVEL = getattr(logging, os.environ.get('PDRP_LOG_LEVEL', ''), logging.INFO)
 LOG_FORMAT = '%(asctime)s | %(name)s | %(levelname)s | %(message)s'
 log_formatter = logging.Formatter(LOG_FORMAT)
 
@@ -46,12 +46,7 @@ coloredlogs.DEFAULT_LEVEL_STYLES = {
 }
 coloredlogs.DEFAULT_LOG_FORMAT = LOG_FORMAT
 
-coloredlogs.install(logger=root_logger, stream=sys.stdout, level=logging.TRACE)
-
-# Important warnings
-logging.getLogger('asyncio').setLevel(logging.WARNING)
-logging.getLogger('chardet').setLevel(logging.WARNING)
-logging.getLogger('websockets').setLevel(logging.WARNING)
+coloredlogs.install(logger=root_logger, stream=sys.stdout, level=LOG_LEVEL)
 
 log = logging.getLogger(__name__)
 log.setLevel(LOG_LEVEL)
