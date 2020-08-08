@@ -169,9 +169,12 @@ class PlexDiscordRichPresence(AioPresence):
         log.debug('Starting Plex alert listener..')
         self.plex_server.startAlertListener(sync_alert_processor)
 
+    async def start(self) -> None:
+        await self.connect()
+        await self.set_presence()
+
     def run(self) -> None:
-        self.loop.run_until_complete(self.connect())
-        self.loop.run_until_complete(self.set_presence())
+        self.loop.run_until_complete(self.start())
 
         try:
             while True:
@@ -179,4 +182,4 @@ class PlexDiscordRichPresence(AioPresence):
         except KeyboardInterrupt:
             log.info('Stopping Plex Discord Rich Presence..')
         finally:
-            self.loop.close()
+            self.close()
