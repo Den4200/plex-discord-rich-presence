@@ -12,6 +12,7 @@ class PlexDiscordRichPresence(AioPresence):
 
     def __init__(
         self,
+        server: str,
         username: str,
         password: t.Optional[str] = None,
         token: t.Optional[str] = None,
@@ -19,6 +20,7 @@ class PlexDiscordRichPresence(AioPresence):
     ) -> None:
         super().__init__(client_id=client_id, loop=asyncio.get_event_loop())
 
+        self.server = server
         self.username = username
 
         if not password and not token:
